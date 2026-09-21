@@ -1,6 +1,6 @@
 /* eslint-disable react/set-state-in-effect */
 import { useEffect, useMemo, useState } from 'react'
-import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { TODAY_STR } from '../lib/dateUtils'
 import { useTheme } from '../context/ThemeContext'
 import { useTasks } from '../context/TaskContext'
@@ -8,9 +8,10 @@ import {
   IconMenu2, IconMoon, IconSun, IconX, IconDashboard, IconListCheck,
   IconClipboardCheck, IconFolderOpen, IconUserPlus, IconProgress, IconPlayerPause,
   IconRotateClockwise, IconBan, IconCircleCheck, IconAlarm, IconHistory, IconArchive,
-  IconBriefcase, IconUserCog, IconCode, IconUpload, IconBook2, IconSettings,
+  IconBriefcase, IconUserCog, IconCode, IconUpload, IconBook2, IconSettings, IconLogout, IconShieldLock,
   IconChevronRight, IconChevronsLeft, IconChevronsRight, type Icon,
 } from '@tabler/icons-react'
+import { authClient } from '../lib/auth-client'
 
 interface NavItem {
   to: string
@@ -57,7 +58,7 @@ const SECTIONS: NavSection[] = [
     { to: '/import', label: 'Import', icon: IconUpload },
     { to: '/guide', label: 'Manual Book', icon: IconBook2 },
   ] },
-  { title: 'Configuration', items: [{ to: '/settings', label: 'Settings', icon: IconSettings }] },
+  { title: 'Configuration', items: [{ to: '/settings', label: 'Settings', icon: IconSettings }, { to: '/admin', label: 'Admin', icon: IconShieldLock }] },
 ]
 
 function readLocalValue(key: string, fallback?: string): string | null {
@@ -72,6 +73,8 @@ export default function AppLayout() {
   const { theme, toggleTheme } = useTheme()
   const { refreshing } = useTasks()
   const location = useLocation()
+  const navigate = useNavigate()
+  const session = authClient.useSession()
 
   const isLinkActive = (to: string) => {
     if (to.includes('?')) return location.pathname + location.search === to
@@ -107,6 +110,11 @@ export default function AppLayout() {
       writeLocalValue('sidebar-open-section', next ?? '')
       return next
     })
+  }
+
+  const handleSignOut = async () => {
+    await authClient.signOut()
+    navigate('/login', { replace: true })
   }
 
   const renderNavHeader = (section: NavSection) => (
@@ -225,10 +233,12 @@ export default function AppLayout() {
           <div className="glass rounded-2xl p-3 flex items-center gap-3">
             <img src="https://i.pravatar.cc/100?img=12" alt="user" className="w-8 h-8 rounded-full object-cover ring-1" style={{ borderColor: 'var(--border-light)' }} />
             <div className="min-w-0">
-              <div className="text-xs font-medium font-mono truncate" style={{ color: 'var(--text-primary)' }}>Internal</div>
-              <div className="text-[10px] font-mono truncate" style={{ color: 'var(--text-muted)' }}>System · {TODAY_STR}</div>
+              <div className="text-xs font-medium font-mono truncate" style={{ color: 'var(--text-primary)' }}>{session.data?.user.name || 'Internal'}</div>
+              <div className="text-[10px] font-mono truncate" style={{ color: 'var(--text-muted)' }}>{session.data?.user.email || `System · ${TODAY_STR}`}</div>
             </div>
-            <span className="ml-auto w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)] shrink-0" />
+            <button type="button" onClick={handleSignOut} className="ml-auto rounded-lg p-1.5 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/30" style={{ color: 'var(--text-muted)' }} aria-label="Keluar" title="Keluar">
+              <IconLogout size={15} stroke={1.75} />
+            </button>
           </div>
         )}
       </aside>

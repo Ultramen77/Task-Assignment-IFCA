@@ -17,11 +17,16 @@ import type {
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || ''
 const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || ''
-const supabase: SupabaseClient = createClient(supabaseUrl, supabaseKey)
+// Keep module initialization safe when the app is running in mock mode. The
+// client is never called unless isApiMode() is true and real credentials exist.
+const supabase: SupabaseClient = createClient(
+  supabaseUrl || 'http://localhost:54321',
+  supabaseKey || 'mock-anon-key',
+)
 
 export const taskService = {
   isApiMode(): boolean {
-    return import.meta.env.VITE_DATA_SOURCE === 'supabase'
+    return import.meta.env.VITE_DATA_SOURCE === 'supabase' && Boolean(supabaseUrl && supabaseKey)
   },
 
   async getTasks(includeArchived = false): Promise<TaskReadModel[]> {

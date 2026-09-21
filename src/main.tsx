@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client'
 import { HashRouter } from 'react-router-dom'
 import './index.css'
 import App from './App'
-import { TaskProvider } from './context/TaskContext'
 import { ToastProvider } from './context/ToastContext'
 import { ThemeProvider } from './context/ThemeContext'
 import { initFont } from './lib/fonts'
@@ -15,9 +14,7 @@ createRoot(document.getElementById('root')!).render(
     <HashRouter>
       <ThemeProvider>
         <ToastProvider>
-          <TaskProvider>
-            <App />
-          </TaskProvider>
+          <App />
         </ToastProvider>
       </ThemeProvider>
     </HashRouter>
