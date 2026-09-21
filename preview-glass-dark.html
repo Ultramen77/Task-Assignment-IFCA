@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Task Assignment — Dark Glassmorphism Preview (Varian C)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{font-family:Inter,system-ui,sans-serif}
+  .mono{font-family:"JetBrains Mono",monospace}
+  .glass {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+  .glass-strong {
+    background: rgba(255,255,255,0.09);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+  .glass-subtle {
+    background: rgba(255,255,255,0.035);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .glow-violet { box-shadow: 0 0 40px rgba(124,58,237,0.35), 0 8px 32px rgba(0,0,0,0.35); }
+  .glow-cyan { box-shadow: 0 0 40px rgba(6,182,212,0.25), 0 8px 32px rgba(0,0,0,0.35); }
+  .glow-amber { box-shadow: 0 0 40px rgba(245,158,11,0.22), 0 8px 32px rgba(0,0,0,0.35); }
+  /* hide scrollbar */
+  ::-webkit-scrollbar{width:6px;height:6px}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.12);border-radius:999px}
+</style>
+</head>
+<body class="min-h-screen bg-[#020617] text-slate-200 selection:bg-violet-500/30 overflow-x-hidden">
+  <!-- Ambient mesh gradients -->
+  <div class="fixed inset-0 -z-10 overflow-hidden">
+    <div class="absolute inset-0 bg-[#020617]"></div>
+    <div class="absolute -top-[30%] -left-[20%] w-[85%] h-[75%] rounded-full opacity-40" style="background: radial-gradient(ellipse at center, #4f46e5 0%, #7c3aed 35%, transparent 70%); filter: blur(40px);"></div>
+    <div class="absolute -top-[10%] -right-[15%] w-[70%] h-[60%] rounded-full opacity-30" style="background: radial-gradient(ellipse at center, #06b6d4 0%, #3b82f6 40%, transparent 70%); filter: blur(40px);"></div>
+    <div class="absolute top-[35%] left-[25%] w-[50%] h-[45%] rounded-full opacity-20" style="background: radial-gradient(ellipse at center, #8b5cf6 0%, transparent 70%); filter: blur(50px);"></div>
+    <div class="absolute bottom-0 right-0 w-[60%] h-[40%] rounded-full opacity-15" style="background: radial-gradient(ellipse at center, #0ea5e9 0%, transparent 70%); filter: blur(60px);"></div>
+    <!-- subtle grid -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px); background-size: 32px 32px;"></div>
+  </div>
+
+  <div class="flex min-h-screen">
+    <!-- Sidebar — glass dark -->
+    <aside class="hidden lg:flex w-[248px] shrink-0 flex-col p-4 gap-4">
+      <div class="glass-strong rounded-2xl p-4">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-violet-500 to-cyan-400 flex items-center justify-center text-white font-bold text-xs mono shadow-lg">TA</div>
+          <div>
+            <div class="text-[11px] font-semibold tracking-widest text-white mono">TASK ASSIGNMENT</div>
+            <div class="text-[10px] text-white/50 mono -mt-0.5">varian C · dark glass</div>
+          </div>
+        </div>
+        <div class="mt-4 space-y-1">
+          <a class="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-white text-slate-900 text-xs font-medium mono"><span>◧</span> Dashboard <span class="ml-auto text-[10px] bg-slate-900 text-white px-1.5 py-0.5 rounded">active</span></a>
+          <a class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-white/70 hover:bg-white/5 text-xs mono">☰ Tasks <span class="ml-auto text-[10px] text-white/30">128</span></a>
+          <a class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-white/40 hover:bg-white/5 text-xs mono">◨ Master Data ▾</a>
+          <div class="ml-4 space-y-0.5 text-[11px] mono">
+            <div class="px-3 py-1.5 rounded-lg bg-white/5 text-white">Clients</div>
+            <div class="px-3 py-1.5 rounded-lg text-white/40">Consultants</div>
+            <div class="px-3 py-1.5 rounded-lg text-white/40">Programmers</div>
+          </div>
+          <a class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-white/40 hover:bg-white/5 text-xs mono mt-1">⚙ Settings</a>
+        </div>
+      </div>
+      <div class="glass rounded-2xl p-3 flex items-center gap-3">
+        <img src="https://i.pravatar.cc/100?img=12" class="w-8 h-8 rounded-full object-cover ring-1 ring-white/10" />
+        <div class="min-w-0">
+          <div class="text-xs font-medium text-white mono truncate">Faisal Fakhri</div>
+          <div class="text-[10px] text-white/40 mono">faisal@ifca · Owner</div>
+        </div>
+        <span class="ml-auto w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
+      </div>
+      <div class="glass-subtle rounded-2xl p-3">
+        <div class="text-[10px] tracking-widest text-white/30 mono">PREVIEW NOTE</div>
+        <p class="text-[11px] leading-relaxed text-white/60 mt-1">Ini preview statis Varian C. Table & modal di kanan pakai glass yang sama yang akan kita terapkan ke <span class="text-white">Clients / Consultants / Programmers</span> + TasksPage.</p>
+        <div class="mt-3 flex gap-1.5">
+          <span class="px-2 py-1 rounded-full glass text-[10px] mono text-white/70">backdrop-blur-xl</span>
+          <span class="px-2 py-1 rounded-full glass text-[10px] mono text-white/70">border-white/8</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="flex-1 min-w-0 p-4 lg:p-6 lg:pl-0">
+      <!-- Topbar glass -->
+      <div class="glass-strong rounded-2xl px-4 py-3 flex flex-wrap items-center gap-3">
+        <div>
+          <h1 class="text-sm font-semibold text-white tracking-tight">Dashboard <span class="text-white/30 font-normal mono text-xs">/ dark glassmorphism</span></h1>
+          <p class="text-xs text-white/45 mono">Supabase · ntbylafxutwemwmdputg · 5 tasks · 3 master tables</p>
+        </div>
+        <div class="ml-auto flex items-center gap-2">
+          <div class="hidden sm:flex items-center gap-2 glass-subtle rounded-full px-3 py-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-[11px] mono text-white/70">Supabase connected</span>
+            <span class="text-[10px] mono text-white/30">·</span>
+            <span class="text-[11px] mono text-white/50">R2 ready</span>
+          </div>
+          <button class="px-3 py-1.5 rounded-full bg-white text-slate-900 text-xs font-medium mono hover:bg-white/90">+ New Task</button>
+        </div>
+      </div>
+
+      <!-- Stats 4 cards — glass -->
+      <div class="grid grid-cols-2 xl:grid-cols-4 gap-3 mt-4">
+        <div class="glass rounded-2xl p-4 relative overflow-hidden glow-violet">
+          <div class="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-violet-500/20 blur-2xl"></div>
+          <div class="text-[10px] tracking-widest text-white/40 mono">OPEN</div>
+          <div class="mt-1 flex items-baseline gap-2"><span class="text-2xl font-semibold text-white">24</span><span class="text-xs px-1.5 py-0.5 rounded-full bg-amber-400/15 text-amber-300 border border-amber-400/20 mono">+3 today</span></div>
+          <div class="mt-3 h-1.5 rounded-full bg-white/5 overflow-hidden"><div class="h-full w-[62%] bg-gradient-to-r from-violet-500 to-fuchsia-400 rounded-full"></div></div>
+        </div>
+        <div class="glass rounded-2xl p-4 relative overflow-hidden glow-cyan">
+          <div class="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-cyan-400/15 blur-2xl"></div>
+          <div class="text-[10px] tracking-widest text-white/40 mono">ASSIGNED</div>
+          <div class="mt-1 flex items-baseline gap-2"><span class="text-2xl font-semibold text-white">18</span><span class="text-xs text-white/40 mono">/ 42 total</span></div>
+          <div class="mt-3 h-1.5 rounded-full bg-white/5 overflow-hidden"><div class="h-full w-[43%] bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></div></div>
+        </div>
+        <div class="glass rounded-2xl p-4 relative overflow-hidden">
+          <div class="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-emerald-400/12 blur-2xl"></div>
+          <div class="text-[10px] tracking-widest text-white/40 mono">DONE</div>
+          <div class="mt-1 flex items-baseline gap-2"><span class="text-2xl font-semibold text-white">86</span><span class="text-xs px-1.5 py-0.5 rounded-full bg-emerald-400/15 text-emerald-300 border border-emerald-400/20 mono">94% rate</span></div>
+          <div class="mt-3 h-1.5 rounded-full bg-white/5 overflow-hidden"><div class="h-full w-[86%] bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full"></div></div>
+        </div>
+        <div class="glass rounded-2xl p-4 relative overflow-hidden glow-amber">
+          <div class="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-amber-400/15 blur-2xl"></div>
+          <div class="text-[10px] tracking-widest text-white/40 mono">OVERDUE</div>
+          <div class="mt-1 flex items-baseline gap-2"><span class="text-2xl font-semibold text-white">7</span><span class="text-xs px-1.5 py-0.5 rounded-full bg-red-400/15 text-red-300 border border-red-400/20 mono">needs attention</span></div>
+          <div class="mt-3 h-1.5 rounded-full bg-white/5 overflow-hidden"><div class="h-full w-[16%] bg-gradient-to-r from-amber-400 to-red-400 rounded-full"></div></div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 xl:grid-cols-[1.7fr_1fr] gap-4 mt-4">
+        <!-- Tasks table — glass -->
+        <div class="glass rounded-2xl overflow-hidden">
+          <div class="px-4 py-3 flex flex-wrap items-center gap-2 border-b border-white/5">
+            <h3 class="text-xs font-semibold tracking-widest text-white mono">TASKS · RECENT</h3>
+            <span class="text-[11px] mono px-2 py-0.5 rounded-full glass-subtle text-white/50">Supabase tasks table</span>
+            <div class="ml-auto flex gap-1.5">
+              <span class="px-2 py-1 rounded-full bg-white text-slate-900 text-[11px] mono">All</span>
+              <span class="px-2 py-1 rounded-full glass-subtle text-white/50 text-[11px] mono">Open</span>
+              <span class="px-2 py-1 rounded-full glass-subtle text-white/50 text-[11px] mono">Overdue</span>
+            </div>
+          </div>
+          <div class="p-3">
+            <div class="flex gap-2 mb-3">
+              <input placeholder="Search task, client, screen..." class="flex-1 rounded-xl glass-subtle px-3 py-2 text-xs mono placeholder:text-white/30 text-white focus:outline-none focus:border-white/15 border border-white/5" />
+              <button class="px-3 py-2 rounded-xl bg-white text-slate-900 text-xs mono font-medium">Search</button>
+            </div>
+            <div class="overflow-auto rounded-xl border border-white/5">
+              <table class="w-full text-left text-xs mono">
+                <thead class="bg-white/[0.03] backdrop-blur">
+                  <tr class="text-white/40">
+                    <th class="px-3 py-2 font-medium">ID</th>
+                    <th class="px-3 py-2 font-medium">Client</th>
+                    <th class="px-3 py-2 font-medium">Screen</th>
+                    <th class="px-3 py-2 font-medium">Status</th>
+                    <th class="px-3 py-2 font-medium text-right">Due</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5">
+                  <tr class="hover:bg-white/[0.03]"><td class="px-3 py-2.5 text-white font-medium">TASK-000005</td><td class="px-3 py-2.5 text-white/70">Pabrik Kertas A</td><td class="px-3 py-2.5 text-white/60">w_cm_progress</td><td class="px-3 py-2.5"><span class="px-2 py-0.5 rounded-full bg-amber-400/15 text-amber-300 border border-amber-400/20 text-[10px]">Assign</span></td><td class="px-3 py-2.5 text-right text-amber-300">2d left</td></tr>
+                  <tr class="hover:bg-white/[0.03]"><td class="px-3 py-2.5 text-white font-medium">TASK-000004</td><td class="px-3 py-2.5 text-white/70">Toko Baju B</td><td class="px-3 py-2.5 text-white/60">w_lm_land_acq</td><td class="px-3 py-2.5"><span class="px-2 py-0.5 rounded-full bg-sky-400/15 text-sky-300 border border-sky-400/20 text-[10px]">Open</span></td><td class="px-3 py-2.5 text-right text-red-300">Overdue</td></tr>
+                  <tr class="hover:bg-white/[0.03]"><td class="px-3 py-2.5 text-white font-medium">TASK-000003</td><td class="px-3 py-2.5 text-white/70">PT Maju Jaya</td><td class="px-3 py-2.5 text-white/60">w_ar_debtor</td><td class="px-3 py-2.5"><span class="px-2 py-0.5 rounded-full bg-emerald-400/15 text-emerald-300 border border-emerald-400/20 text-[10px]">Done</span></td><td class="px-3 py-2.5 text-right text-white/30">—</td></tr>
+                  <tr class="hover:bg-white/[0.03]"><td class="px-3 py-2.5 text-white font-medium">TASK-000002</td><td class="px-3 py-2.5 text-white/70">CV Sumber Rejeki</td><td class="px-3 py-2.5 text-white/60">w_cf_trx_type</td><td class="px-3 py-2.5"><span class="px-2 py-0.5 rounded-full bg-violet-400/15 text-violet-300 border border-violet-400/20 text-[10px]">Assign</span></td><td class="px-3 py-2.5 text-right text-white/60">5d left</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mt-3 flex items-center justify-between text-[11px] mono text-white/30"><span>Showing 4 of 128 tasks · Supabase pagination</span><span class="flex gap-1"><span class="w-6 h-6 grid place-items-center rounded-lg bg-white text-slate-900">1</span><span class="w-6 h-6 grid place-items-center rounded-lg glass-subtle">2</span><span class="w-6 h-6 grid place-items-center rounded-lg glass-subtle">3</span></span></div>
+          </div>
+        </div>
+
+        <!-- MasterData + Activity — glass -->
+        <div class="space-y-4">
+          <div class="glass rounded-2xl overflow-hidden">
+            <div class="px-4 py-3 flex items-center justify-between border-b border-white/5">
+              <h3 class="text-xs font-semibold tracking-widest text-white mono">CLIENTS_MASTER</h3>
+              <button class="px-2.5 py-1 rounded-full bg-white text-slate-900 text-[11px] mono font-medium">+ Tambah Client</button>
+            </div>
+            <div class="p-3">
+              <input placeholder="Cari ID / nama client..." class="w-full rounded-xl glass-subtle px-3 py-2 text-xs mono placeholder:text-white/30 text-white border border-white/5 focus:outline-none" value="Kertas" readonly />
+              <div class="mt-3 rounded-xl overflow-hidden border border-white/5">
+                <table class="w-full text-left text-xs mono">
+                  <thead class="bg-white/[0.03]"><tr class="text-white/40"><th class="px-3 py-2 font-medium">ID</th><th class="px-3 py-2 font-medium">Name</th><th class="px-3 py-2 font-medium text-right">Aksi</th></tr></thead>
+                  <tbody class="divide-y divide-white/5">
+                    <tr class="hover:bg-white/[0.03]"><td class="px-3 py-2 text-white">CLI-000001</td><td class="px-3 py-2 text-white/70">Pabrik Kertas A</td><td class="px-3 py-2 text-right"><span class="px-1.5 py-0.5 rounded bg-emerald-400/15 text-emerald-300 border border-emerald-400/20 text-[10px]">Active</span></td></tr>
+                    <tr class="hover:bg-white/[0.03]"><td class="px-3 py-2 text-white">CLI-000002</td><td class="px-3 py-2 text-white/60">Toko Baju B</td><td class="px-3 py-2 text-right"><span class="px-1.5 py-0.5 rounded bg-white/5 text-white/40 border border-white/10 text-[10px]">Inactive</span></td></tr>
+                    <tr class="hover:bg-white/[0.03]"><td class="px-3 py-2 text-white">CLI-000003</td><td class="px-3 py-2 text-white/70">PT Maju Jaya</td><td class="px-3 py-2 text-right"><span class="px-1.5 py-0.5 rounded bg-emerald-400/15 text-emerald-300 border border-emerald-400/20 text-[10px]">Active</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="mt-2 flex gap-1.5 justify-end">
+                <span class="px-2 py-1 rounded-lg glass-subtle text-[11px] mono text-white/60">⏸ Off</span><span class="px-2 py-1 rounded-lg glass-subtle text-[11px] mono text-white/60">✎ Edit</span><span class="px-2 py-1 rounded-lg bg-red-500/15 border border-red-400/20 text-red-300 text-[11px] mono">✕ Hapus</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass rounded-2xl p-4">
+            <div class="text-[10px] tracking-widest text-white/30 mono">RECENT ACTIVITY · task_history</div>
+            <div class="mt-3 space-y-2.5 text-xs mono">
+              <div class="flex gap-3"><span class="w-1.5 h-1.5 mt-1.5 rounded-full bg-violet-400 shrink-0 shadow-[0_0_8px_rgba(139,92,246,0.8)]"></span><div><span class="text-white">TASK-000005</span> <span class="text-white/40">updated</span> <span class="text-white">status → Done</span><div class="text-white/30 text-[11px]">2m ago · SYSTEM</div></div></div>
+              <div class="flex gap-3"><span class="w-1.5 h-1.5 mt-1.5 rounded-full bg-cyan-400 shrink-0"></span><div><span class="text-white">CLI-000004</span> <span class="text-white/40">created</span><div class="text-white/30 text-[11px]">18m ago · SYSTEM</div></div></div>
+              <div class="flex gap-3"><span class="w-1.5 h-1.5 mt-1.5 rounded-full bg-emerald-400 shrink-0"></span><div><span class="text-white">ATT-000003</span> <span class="text-white/40">uploaded to</span> <span class="text-white">TASK-000005</span><div class="text-white/30 text-[11px]">1h ago · R2/ Storage</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Glass modal preview -->
+      <div class="mt-4 glass-strong rounded-2xl p-4 flex flex-col lg:flex-row gap-4 items-start">
+        <div class="flex-1">
+          <div class="text-[10px] tracking-widest text-white/30 mono">MODAL PREVIEW — glass-strong + backdrop-blur-20</div>
+          <h4 class="text-sm font-semibold text-white mt-1">Tambah Client Baru <span class="text-white/30 font-normal mono text-xs">· ID auto CLI-00000x</span></h4>
+          <div class="mt-3 glass-subtle rounded-xl p-3 flex gap-2">
+            <input placeholder="Nama client" value="PT Sinar Baru Abadi" readonly class="flex-1 bg-transparent text-sm mono text-white placeholder:text-white/30 focus:outline-none" />
+            <span class="px-2 py-1 rounded-full bg-emerald-400/15 text-emerald-300 border border-emerald-400/20 text-[10px] mono">valid</span>
+          </div>
+          <div class="mt-3 flex gap-2">
+            <button class="px-3 py-1.5 rounded-full glass-subtle text-white/70 text-xs mono">Batal</button>
+            <button class="px-4 py-1.5 rounded-full bg-white text-slate-900 text-xs mono font-medium">Tambah</button>
+            <span class="ml-auto text-[11px] mono text-white/25 self-center">Esc to close · Enter to submit</span>
+          </div>
+        </div>
+        <div class="w-full lg:w-[320px] glass-subtle rounded-2xl p-3">
+          <div class="text-[10px] tracking-widest text-white/30 mono">TOKENS — VARIAN C</div>
+          <div class="mt-2 space-y-1.5 text-[11px] mono">
+            <div class="flex justify-between"><span class="text-white/40">bg</span><span class="text-white">bg-[#020617] + mesh violet/cyan</span></div>
+            <div class="flex justify-between"><span class="text-white/40">glass</span><span class="text-white">bg-white/6 · blur 16 · border white/8</span></div>
+            <div class="flex justify-between"><span class="text-white/40">glass-strong</span><span class="text-white">bg-white/9 · blur 20 · border white/12</span></div>
+            <div class="flex justify-between"><span class="text-white/40">radius</span><span class="text-white">rounded-2xl (16px)</span></div>
+            <div class="flex justify-between"><span class="text-white/40">text</span><span class="text-white">white / white/70 / white/40</span></div>
+            <div class="flex justify-between"><span class="text-white/40">accent</span><span class="text-white">violet-500 → cyan-400 gradient</span></div>
+          </div>
+          <div class="mt-3 grid grid-cols-3 gap-1.5">
+            <div class="h-8 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-400"></div>
+            <div class="h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500"></div>
+            <div class="h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-400"></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center text-[11px] mono text-white/20 mt-6">Preview file: <span class="text-white/40">E:/Project/Task-Assigment/preview-glass-dark.html</span> — buka langsung di browser. Kalau oke, gua terapkan ke AppLayout + MasterDataTable + TasksPage.</p>
+    </main>
+  </div>
+</body>
+</html>
