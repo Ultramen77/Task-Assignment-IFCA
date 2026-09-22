@@ -14,7 +14,7 @@ import type {
   CreateTaskCommentPayload,
 } from '../types/task.types'
 import { mockTasks, mockHistory, mockAttachments, mockComments, mockConsultants, mockProgrammers, mockClients } from '../data/mockData'
-import { taskService } from '../services/taskService'
+import { postgresTaskService } from '../services/postgresTaskService'
 
 interface TaskContextType {
   tasks: Task[]
@@ -67,7 +67,8 @@ export function TaskProvider({ children }: { children: ReactNode }) {
   const [error, setError] = useState<string | null>(null)
   const refreshInFlight = useRef(false)
 
-  const isApi = taskService.isApiMode()
+  const isApi = postgresTaskService.isApiMode()
+  const taskService = postgresTaskService
 
   // Helper to map API read model to internal UI Task format
   const mapTaskReadToTask = useCallback((rm: any): Task => {

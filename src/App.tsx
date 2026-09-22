@@ -1,5 +1,4 @@
 import { Routes, Route, Navigate, Outlet, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
 import AppLayout from './layouts/AppLayout'
 import DashboardPage from './pages/DashboardPage'
 import TasksPage from './pages/TasksPage'
@@ -12,12 +11,10 @@ import GuidePage from './pages/GuidePage'
 import LoginPage from './pages/LoginPage'
 import ForgotPasswordPage, { ResetPasswordPage } from './pages/ForgotPasswordPage'
 import AdminPage from './pages/AdminPage'
-import { flushSheetsQueue } from './lib/sheetSync'
 import { authClient } from './lib/auth-client'
 import { TaskProvider } from './context/TaskContext'
 
 export default function App() {
-  useEffect(() => { flushSheetsQueue() }, [])
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />

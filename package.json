@@ -14,9 +14,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.114.0",
     "@tabler/icons-react": "^3.46.0",
     "@tailwindcss/vite": "^4.3.3",
+    "basic-ftp": "^6.2.1",
     "better-auth": "^1.7.5",
     "cors": "^2.8.6",
     "dotenv": "^18.0.1",

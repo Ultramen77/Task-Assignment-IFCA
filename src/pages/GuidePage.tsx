@@ -146,7 +146,7 @@ export default function GuidePage() {
             <li>Sistem baca preview — hijau = valid, merah = error</li>
             <li>Cek error (mis: Consultant kosong, Type salah, Client kosong)</li>
             <li>Klik "Import Valid (n)" → tunggu progress bar selesai</li>
-            <li>Selesai! Data masuk ke sistem & ke Sheet otomatis</li>
+            <li>Selesai! Data masuk ke PostgreSQL kantor</li>
           </ol>
           <p className="text-xs text-amber-600">⚠ Import HANYA untuk migrasi awal. Buat task baru pakai "New Task" aja.</p>
         </div>
@@ -162,11 +162,11 @@ export default function GuidePage() {
           </div>
           <div className="glass-subtle rounded-xl p-3 border border-slate-200">
             <div className="font-semibold text-slate-700">Error "violates check constraint tasks_status_check"?</div>
-            <div className="text-xs text-slate-500 mt-1">Minta ke admin jalanin SQL di Supabase (sekali aja). Status 8 opsi butuh update DB.</div>
+            <div className="text-xs text-slate-500 mt-1">Jika status tidak sesuai, minta admin cek constraint/status di PostgreSQL kantor.</div>
           </div>
           <div className="glass-subtle rounded-xl p-3 border border-slate-200">
             <div className="font-semibold text-slate-700">Sync ke Sheet gagal / CORS error?</div>
-            <div className="text-xs text-slate-500 mt-1">Data aman di Supabase. Queue otomatis dikirim ulang pas buka web lagi. Cek Console → Local Storage → <code>sheets_sync_queue</code></div>
+            <div className="text-xs text-slate-500 mt-1">Data utama tersimpan di PostgreSQL. Jika error berulang, minta admin cek status API server dan koneksi database.</div>
           </div>
           <div className="glass-subtle rounded-xl p-3 border border-slate-200">
             <div className="font-semibold text-slate-700">Dropdown teks nyaru / Save nggak keliatan?</div>
@@ -178,7 +178,7 @@ export default function GuidePage() {
       {/* Footer */}
       <div className="glass rounded-2xl p-4 text-center">
         <p className="text-xs font-mono text-slate-400">Butuh bantuan? Tanya ke Sawi / IT Support</p>
-        <p className="text-[10px] font-mono text-slate-400 mt-1">Task Assignment System · GitHub Pages + Supabase · Sync ke Google Sheet TEAM ARI</p>
+        <p className="text-[10px] font-mono text-slate-400 mt-1">Task Assignment System · PostgreSQL kantor + Office FTP</p>
       </div>
     </div>
   )

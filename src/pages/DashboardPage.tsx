@@ -8,6 +8,7 @@ import StatusBadge from '../components/StatusBadge'
 import TaskTypeBadge from '../components/TaskTypeBadge'
 import DeadlineIndicator from '../components/DeadlineIndicator'
 import { fieldLabel, resolveDisplayValue } from '../lib/historyDisplay'
+import { DATA_SOURCE_LABEL } from '../lib/dataSourceLabel'
 
 type FilterMode = 'created' | 'target'
 
@@ -81,7 +82,7 @@ export default function DashboardPage() {
             <div>
               <h2 className="text-base font-semibold tracking-tight text-slate-800">Dashboard</h2>
               <p className="text-xs text-slate-400 font-mono mt-0.5">
-                Overview relative to {TODAY_STR} · Supabase · {activeTasksList.length} active tasks
+                Overview relative to {TODAY_STR} · {DATA_SOURCE_LABEL} · {activeTasksList.length} active tasks
                 
               </p>
             </div>

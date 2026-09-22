@@ -4,7 +4,7 @@ import type { Task } from '../types/task.types'
 // In API mode we use the actual current date; in mock mode we keep a fixed
 // baseline so the UI/prototype behavior is deterministic.
 export const MOCK_TODAY_STR = '2026-08-19'
-export const USE_REAL_TODAY = import.meta.env.VITE_DATA_SOURCE === 'supabase' || import.meta.env.VITE_DATA_SOURCE === 'api'
+export const USE_REAL_TODAY = import.meta.env.VITE_DATA_SOURCE === 'postgres'
 
 export function getCurrentDate(): Date {
   if (USE_REAL_TODAY) {

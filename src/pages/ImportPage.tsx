@@ -1,7 +1,7 @@
 /* eslint-disable react/set-state-in-effect */
 import { useState, useRef } from 'react'
 import { useTasks } from '../context/TaskContext'
-import { taskService } from '../services/taskService'
+import { postgresTaskService as taskService } from '../services/postgresTaskService'
 import { parseTeamAriFile, downloadTemplate, type ImportParseResult } from '../lib/excelTeamAri'
 import type { TaskType, TaskStatus } from '../types/task.types'
 
@@ -118,7 +118,7 @@ export default function ImportPage() {
       <div className="glass-strong rounded-2xl px-5 py-4 flex items-center justify-between gap-4">
         <div>
           <h2 className="text-sm font-semibold tracking-tight text-slate-800 font-mono">IMPORT_TEAM_ARI</h2>
-          <p className="text-xs text-slate-400 font-mono mt-0.5">Upload file `IFCA KM+.xlsx` sheet <b className="text-slate-600">TEAM ARI</b> — auto validasi + migrasi ke Supabase</p>
+          <p className="text-xs text-slate-400 font-mono mt-0.5">Upload file `IFCA KM+.xlsx` sheet <b className="text-slate-600">TEAM ARI</b> — auto validasi + migrasi ke PostgreSQL</p>
         </div>
         <button onClick={() => downloadTemplate()} className="rounded-full glass-subtle border border-slate-200 px-4 py-1.5 text-xs font-semibold text-slate-800 hover:bg-slate-50 shrink-0">Download Template</button>
       </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { taskService } from '../services/taskService'
+import { postgresTaskService as taskService } from '../services/postgresTaskService'
 import { useTasks } from '../context/TaskContext'
 
 export type MasterEntityType = 'clients' | 'consultants' | 'programmers'

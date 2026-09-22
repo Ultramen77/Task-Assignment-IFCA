@@ -2,6 +2,7 @@
 import { useState, useMemo, useEffect, useCallback, useRef } from 'react'
 import { useTasks } from '../context/TaskContext'
 import { useToast } from '../context/ToastContext'
+import { DATA_SOURCE_LABEL } from '../lib/dataSourceLabel'
 import type { TaskHistory, Attachment, TaskComment, CommentAuthorType } from '../types/task.types'
 import StatusBadge from './StatusBadge'
 import TaskTypeBadge from './TaskTypeBadge'
@@ -262,7 +263,7 @@ export default function TaskDetail({ taskId, onClose, onEdit }: TaskDetailProps)
             <div className="flex items-center gap-1.5 text-[13px] font-semibold text-slate-700">
               <IconMessageCircle size={14} stroke={1.75} /> Comments {!loadingComments && `(${taskComments.length})`}
             </div>
-            <span className="text-[10px] font-mono text-slate-400">Supabase only</span>
+            <span className="text-[10px] font-mono text-slate-400">{DATA_SOURCE_LABEL}</span>
           </div>
           {loadingComments ? <div className="text-xs text-slate-400 italic">Loading comments…</div>
           : commentsError ? <div className="text-xs text-red-500 italic">Failed to load comments. It will retry automatically.</div>

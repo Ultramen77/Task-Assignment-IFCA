@@ -2,6 +2,7 @@
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { useTasks } from '../context/TaskContext'
 import { useToast } from '../context/ToastContext'
+import { DATA_SOURCE_LABEL } from '../lib/dataSourceLabel'
 import type { TaskStatus, TaskType, TaskComment, CommentAuthorType } from '../types/task.types'
 import {
   formatFileSize,
@@ -615,7 +616,7 @@ export default function TaskForm({ taskId, onClose, onSubmitSuccess }: TaskFormP
               <h3 className="text-xs font-bold font-mono tracking-wider uppercase" style={{ color: 'var(--text-muted)' }}>
                 Comments {!loadingComments && `(${taskComments.length})`}
               </h3>
-              <span className="text-[10px] font-mono" style={{ color: 'var(--text-muted)' }}>Supabase only</span>
+              <span className="text-[10px] font-mono" style={{ color: 'var(--text-muted)' }}>{DATA_SOURCE_LABEL}</span>
             </div>
             {loadingComments ? <div className="text-xs italic" style={{ color: 'var(--text-muted)' }}>Loading comments…</div>
             : commentsError ? <div className="text-xs italic text-red-500">Failed to load comments. It will retry automatically.</div>

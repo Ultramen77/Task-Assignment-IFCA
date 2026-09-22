@@ -12,6 +12,7 @@ import {
   IconChevronRight, IconChevronsLeft, IconChevronsRight, type Icon,
 } from '@tabler/icons-react'
 import { authClient } from '../lib/auth-client'
+import { DATA_SOURCE_LABEL } from '../lib/dataSourceLabel'
 
 interface NavItem {
   to: string
@@ -285,7 +286,7 @@ export default function AppLayout() {
             </button>
             <span className="hidden sm:inline-flex items-center gap-2 glass-subtle rounded-full px-3 py-1">
               <span className={`w-2 h-2 rounded-full ${refreshing ? 'bg-amber-400 animate-pulse' : 'bg-emerald-400'}`} />
-              <span className="text-[11px] font-mono" style={{ color: 'var(--text-secondary)' }}>{refreshing ? 'Updating...' : 'Supabase'}</span>
+              <span className="text-[11px] font-mono" style={{ color: 'var(--text-secondary)' }}>{refreshing ? 'Updating...' : DATA_SOURCE_LABEL}</span>
             </span>
             <span className="text-xs font-mono hidden lg:inline" style={{ color: 'var(--text-muted)' }}>System Date: <span className="font-semibold" style={{ color: 'var(--text-primary)' }}>{TODAY_STR}</span></span>
           </div>
